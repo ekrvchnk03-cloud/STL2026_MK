@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мастер-класутс «Интернет-гигиена»</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link el="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-r900 min-h-screen text-white">
+
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        
+        <!-- Заголовок -->
+        <div class="text-center mb-8">
+            <div class="text-5xl mb-4">🎓</div>
+            <h1 class="text-3xl font-bold mb-2">МАСТЕР-КЛАСС</h1>
+            <h2 class="text-xl text-cyan-400 mb-4">«Интернет-гигиена»</h2>
+            <p class="text-slate-300">Как не подписывать то, что не читаешь</p>
+        </div>
+
+        <!-- Описание -->
+        <div class="bg-slate-800 rounded-xl p-6 mb-6 border border-slate-700">
+            <h3 class="text-lg font-semibold mb-3">Перед началом — зарегистрируйтесь</h3>
+            <p class="text-slate-400 mb-3">Без регистрации вы не получите:</p>
+            <ul class="text-slate-300 space-y-2">
+                <li>• раздаточный материал</li>
+                <li>• чек-лист «15 шагов»</li>
+                <li>• доступ к веб-приложению</li>
+            </ul>
+        </div>
+
+        <!-- Форма регистрации -->
+        <form id="registrationForm" class="bg-slate-800 rounded-xl p-6 border border-slate-700 space-y-4">
+            
+            <div>
+                <label class="block text-sm font-medium text-slate-300 mb-1">ФИО</label>
+                <input 
+                    type="text" 
+                    name="name" 
+                    required
+                    placeholder="Иванов Иван Иванович"
+                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition"
+                >
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-300 mb-1">Email</label>
+                <input 
+                    type="email" 
+                    name="email" 
+                    required
+                    placeholder="ivan@example.com"
+                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition"
+                >
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-slate-300 mb-1">Телефон</label>
+                <input 
+                    type="tel" 
+                    name="phone" 
+                    required
+                    placeholder="+7 999 999-99-99"
+                    class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-cyan-500 transition"
+                >
+            </div>
+
+            <!-- Чекбокс согласия (предварительно проставлен — dark pattern) -->
+            <div class="flex items-start space-x-3 pt-2">
+                <input 
+                    type="checkbox" 
+                    id="agreement" 
+                    checked 
+                    required
+                    class="mt-1 w-4 h-4 accent-cyan-500"
+                >
+                <label for="agreement" class="text-sm text-slate-300">
+                    Согласен с условиями обработки персональных данных и 
+                    <a href="#" onclick="openAgreement(); return false;" class="text-cyan-400 underline hover:text-cyan-300">
+                        пользовательским соглашением
+                    </a>
+                </label>
+            </div>
+
+            <button 
+                type="submit" 
+                class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-lg transition transform hover:scale-[1.02] active:scale-95"
+            >
+                ЗАРЕГИСТРИРОВАТЬСЯ
+            </button>
+        </form>
+
+        <p class="text-center text-slate-500 text-xs mt-6">
+            © 2025 Мастер-класс «Интернет-гигиена»
+        </p>
+    </div>
+
+    <!-- Модалка с соглашением -->
+    <div id="agreementModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
+        <div class="bg-slate-800 rounded-xl max-w-2xl w-full max-h-[80vh] flex flex-col border border-slate-700">
+            <div class="flex justify-between items-center p-4 border-b border-slate-700">
+                <h3 class="text-lg font-semibold">Пользовательское соглашение</h3>
+                <button onclick="closeAgreement()" class="text-slate-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="overflow-y-auto p-6 text-xs text-slate-400 leading-relaxed agreement-text">
+                <!-- Текст соглашения будет вставлен из agreement.js -->
+            </div>
+            <div class="p-4 border-t border-slate-700 text-center">
+                <button onclick="closeAgreement()" class="bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded-lg transition">
+                    Закрыть
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/agreement.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Обработка регистрации
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const userData = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                registered_at: new Date().toISOString()
+            };
+            
+            // ⚠️ ДАННЫЕ НЕ ОТПРАВЛЯЮТСЯ НА СЕРВЕР — сайт-пустышка
+            // Сохраняем только локально для UX
+            Storage.saveUser(userData);
+            
+            // Редирект на дашборд
+            window.location.href = 'dashboard.html';
+        });
+
+        function openAgreement() {
+            const modal = document.getElementById('agreementModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.querySelector('.agreement-text').innerHTML = AGREEMENT_TEXT;
+        }
+
+        function closeAgreement() {
+            const modal = document.getElementById('agreementModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
