@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">`block-2.html
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Раздел 2 — Cookies</title>
+    <script .tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slsrc="https://cdnate-800 to-slate-900 min-h-screen text-white">
+
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        
+        <!-- Кнопка назад -->
+        <a href="dashboard.html" class="inline-flex items-center text-slate-400 hover:text-white mb-6 transition">
+            <span class="mr-2">←</span> Назад в кабинет
+        </a>
+
+        <!-- Заголовок -->
+        <div class="mb-6">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">🍪</span>
+                <span class="text-xs text-cyan-400 font-semibold bg-cyan-900/30 px-3 py-1 rounded-full">РАЗДЕЛ 2</span>
+            </div>
+            <h1 class="text-2xl font-bold mb-2">Симулятор cookie-баннера</h1>
+            <p class="text-slate-400">Представьте: вы открыли сайт интернет-магазина. Что выберете?</p>
+        </div>
+
+        <!-- Имитация сайта -->
+        <div id="siteContainer" class="bg-white text-slate-900 rounded-xl overflow-hidden shadow-2xl border border-slate-700 relative" style="min-height: 500px;">
+            
+            <!-- Шапка фейкового сайта -->
+            <div class="bg-slate-100 p-4 border-b border-slate-200 flex items-center gap-4">
+                <div class="flex gap-1.5">
+                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                </div>
+                <div class="flex-1 bg-white rounded px-3 py-1 text-sm text-slate-600 border border-slate-200">
+                    🔒 example-shop.ru
+                </div>
+            </div>
+
+            <!-- Контент сайта -->
+            <div class="p-8">
+                <h2 class="text-2xl font-bold mb-2 text-slate-800">🛍 Example Shop</h2>
+                <p class="text-slate-600 mb-6">Лучшие товары для дома и быта</p>
+                
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="bg-slate-100 rounded-lg p-4 h-32"></div>
+                    <div class="bg-slate-100 rounded-lg p-4 h-32"></div>
+                    <div class="bg-slate-100 rounded-lg p-4 h-32"></div>
+                </div>
+                <div class="grid grid-cols-3 gap-4 mt-4">
+                    <div class="bg-slate-100 rounded-lg p-4 h-32"></div>
+                    <div class="bg-slate-100 rounded-lg p-4 h-32"></div>
+                    <div class="bg-slate-100 rounded-lg p-4 h-32"></div>
+                </div>
+            </div>
+
+            <!-- Cookie-баннер -->
+            <div id="cookieBanner" class="absolute bottom-4 left-4 right-4 bg-white border-2 border-slate-200 rounded-xl shadow-2xl p-5">
+                <div class="flex items-start gap-3 mb-4">
+                    <span class="text-2xl">🍪</span>
+                    <div class="flex-1">
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Мы используем cookies для улучшения работы сайта, аналитики и персонализации рекламы. 
+                            Продолжая использовать сайт, вы соглашаетесь с обработкой данных.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center justify-between gap-3">
+                    <!-- Незаметные ссылки -->
+                    <div class="flex gap-3 text-xs">
+                        <button onclick="handleChoice('reject')" class="text-slate-400 hover:text-slate-600 underline">
+                            отклонить
+                        </button>
+                        <button onclick="handleChoice('settings')" class="text-slate-400 hover:text-slate-600 underline">
+                            настроить
+                        </button>
+                    </div>
+                    
+                    <!-- Большая яркая кнопка (dark pattern) -->
+                    <button 
+                        onclick="handleChoice('accept')" 
+                        class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg transition transform hover:scale-105"
+                    >
+                        ✅ ПРИНЯТЬ ВСЁ
+                    </button>
+                </div>
+            </div>
+
+            <!-- Окно настроек cookies (скрыто) -->
+            <div id="cookieSettings" class="absolute inset-0 bg-black/50 hidden items-center justify-center p-4">
+                <div class="bg-white rounded-xl max-w-md w-full p-6 text-slate-800">
+                    <h3 class="text-lg font-bold mb-4">Настройка cookies</h3>
+                    
+                    <div class="space-y-3 mb-6">
+                        <!-- Технические (всегда включены) -->
+                        <div class="flex items-center justify-between p-3 bg-slate-100 rounded-lg">
+                            <div>
+                                <div class="font-semibold text-sm">Технические</div>
+                                <div class="text-xs text-slate-500">Корзина, авторизация, язык</div>
+                            </div>
+                            <div class="text-xs text-slate-500">Обязательные</div>
+                        </div>
+                        
+                        <!-- Аналитические -->
+                        <label class="flex items-center justify-between p-3 bg-slate-100 rounded-lg cursor-pointer hover:bg-slate-200 transition">
+                            <div>
+                                <div class="font-semibold text-sm">Аналитические</div>
+                                <div class="text-xs text-slate-500">Google Analytics, Яндекс.Метрика</div>
+                            </div>
+                            <input type="checkbox" id="analyticsCookies" class="w-5 h-5 accent-cyan-500">
+                        </label>
+                        
+                        <!-- Рекламные -->
+                        <label class="flex items-center justify-between p-3 bg-slate-100 rounded-lg cursor-pointer hover:bg-slate-200 transition">
+                            <div>
+                                <div class="font-semibold text-sm">Рекламные</div>
+                                <div class="text-xs text-slate-500">Таргетинг, ретаргетинг</div>
+                            </div>
+                            <input type="checkbox" id="adCookies" class="w-5 h-5 accent-cyan-500">
+                        </label>
+                        
+                        <!-- Сторонние -->
+                        <label class="flex items-center justify-between p-3 bg-slate-100 rounded-lg cursor-pointer hover:bg-slate-200 transition">
+                            <div>
+                                <div class="font-semibold text-sm">Сторонние</div>
+                                <div class="text-xs text-slate-500">Meta, TikTok, рекламные сети</div>
+                            </div>
+                            <input type="checkbox" id="thirdPartyCookies" class="w-5 h-5 accent-cyan-500">
+                        </label>
+                    </div>
+                    
+                    <button 
+                        onclick="saveSettings()" 
+                        class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition"
+                    >
+                        Сохранить настройки
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Результат выбора (скрыт изначально) -->
+        <div id="resultContainer" class="hidden mt-6">
+            <div id="resultCard" class="rounded-xl p-6 border"></div>
+            
+            <div class="flex gap-3 mt-4">
+                <button onclick="tryAgain()" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white font-semibold py-3 rounded-lg transition">
+                    🔄 Попробовать заново
+                </button>
+                <button id="continueBtn" onclick="finishBlock()" class="flex-1 bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 rounded-lg transition hidden">
+                    Завершить раздел →
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/block-2.js"></script>
+</body>
+</html>
