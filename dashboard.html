@@ -1,0 +1,102 @@
+    <title>Кабинет — Интернет-гигиена</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link ylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen text-white">rel="st
+
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        
+        <!-- Шапка с прогрессом -->
+        <div class="mb-8">
+            <h1 class="text-2xl font-bold mb-2">Привет, <span id="userName">друг</span>! 👋</h1>
+            <p class="text-slate-400 mb-3">Прогресс: <span id="progressText">0/3</span> разделов пройдено</p>
+            <div class="w-full bg-slate-800 rounded-full h-3 overflow-hidden">
+                <div id="progressBar" class="bg-gradient-to-r from-cyan-500 to-blue-500 h-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Опрос -->
+        <a href="poll.html" id="pollCard" class="block bg-gradient-to-r from-purple-600 to-pink-600 rounded-xl p-5 mb-6 hover:scale-[1.02] transition transform">
+            <div class="flex items-center justify-between">
+                <div>
+                    <div class="text-2xl mb-1">📊</div>
+                    <h3 class="font-semibold">Опрос: читаете ли вы соглашения?</h3>
+                    <p class="text-sm text-purple-100 mt-1" id="pollStatus">Пройти опрос →</p>
+                </div>
+            </div>
+        </a>
+
+        <!-- Раздел 1 -->
+        <div id="block1" class="block-card bg-slate-800 rounded-xl p-5 mb-4 border border-slate-700 cursor-pointer hover:border-cyan-500 transition" data-block="1">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-2xl">📄</span>
+                        <span class="text-xs text-cyan-400 font-semibold">РАЗДЕЛ 1</span>
+                        <span class="status-icon"></span>
+                    </div>
+                    <h3 class="font-semibold mb-1">Лицензия, которую мы бы все подписали</h3>
+                    <p class="text-sm text-slate-400">Найди подвохи за 60 секунд</p>
+                </div>
+                <div class="text-slate-500 text-2xl">→</div>
+            </div>
+        </div>
+
+        <!-- Раздел 2 -->
+        <div id="block2" class="block-card bg-slate-800 rounded-xl p-5 mb-4 border border-slate-700 cursor-pointer hover:border-cyan-500 transition opacity-50" data-block="2">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-2xl">🍪</span>
+                        <span class="text-xs text-cyan-400 font-semibold">РАЗДЕЛ 2</span>
+                        <span class="status-icon">🔒</span>
+                    </div>
+                    <h3 class="font-semibold mb-1">Симулятор cookie-баннера</h3>
+                    <p class="text-sm text-slate-400">Откроется после Раздела 1</p>
+                </div>
+                <div class="text-slate-500 text-2xl">→</div>
+            </div>
+        </div>
+
+        <!-- Раздел 3 -->
+        <div id="block3" class="block-card bg-slate-800 rounded-xl p-5 mb-4 border border-slate-700 cursor-pointer hover:border-cyan-500 transition opacity-50" data-block="3">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-2xl">📱</span>
+                        <span class="text-xs text-cyan-400 font-semibold">РАЗДЕЛ 3</span>
+                        <span class="status-icon">🔒</span>
+                    </div>
+                    <h3 class="font-semibold mb-1">Даю или не даю?</h3>
+                    <p class="text-sm text-slate-400">Откроется после Раздела 2</p>
+                </div>
+                <div class="text-slate-500 text-2xl">→</div>
+            </div>
+        </div>
+
+        <!-- Чек-лист -->
+        <div id="checklistCard" class="block-card bg-slate-800 rounded-xl p-5 border-2 border-dashed border-slate-700 cursor-pointer hover:border-yellow-500 transition opacity-50">
+            <div class="flex items-start justify-between">
+                <div class="flex-1">
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-2xl">📋</span>
+                        <span class="text-xs text-yellow-400 font-semibold">НАГРАДА</span>
+                        <span class="status-icon">🔒</span>
+                    </div>
+                    <h3 class="font-semibold mb-1">Чек-лист «15 шагов»</h3>
+                    <p class="text-sm text-slate-400">Откроется после всех разделов</p>
+                </div>
+                <div class="text-slate-500 text-2xl">→</div>
+            </div>
+        </div>
+
+        <!-- Тост -->
+        <div id="toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg hidden">
+            Сначала пройдите предыдущий раздел
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
