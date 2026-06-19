@@ -1,0 +1,109 @@
+<!DOCTYPE html> 
+<html lang="ru"> 
+  <head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1(Опрос) html.0">
+        <title>Опрос — Интернет-гигиена</title>
+    <script ></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slate-800 tosrc="https://cdn.tailwindcss.com"-slate-900 min-h-screen text-white">
+
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        
+        <!-- Кнопка назад -->
+        <a href="dashboard.html" class="inline-flex items-center text-slate-400 hover:text-white mb-6 transition">
+            <span class="mr-2">←</span> Назад в кабинет
+        </a>
+
+        <!-- Заголовок -->
+        <div class="text-center mb-8">
+            <div class="text-4xl mb-3">📊</div>
+            <h1 class="text-2xl font-bold mb-2">Честный опрос</h1>
+            <p class="text-slate-400">Читаете ли вы пользовательские соглашения?</p>
+        </div>
+
+        <!-- Варианты ответа (если не голосовал) -->
+        <div id="voteSection" class="space-y-4 mb-6">
+            <button 
+                onclick="vote('red')" 
+                class="w-full bg-slate-800 hover:bg-red-900/40 border-2 border-slate-700 hover:border-red-500 rounded-xl p-6 text-left transition transform hover:scale-[1.02]"
+            >
+                <div class="flex items-center">
+                    <span class="text-3xl mr-4">🔴</span>
+                    <div>
+                        <div class="font-semibold mb-1">Никогда не читаю</div>
+                        <div class="text-sm text-slate-400">Нажимаю «Согласен» и иду дальше</div>
+                    </div>
+                </div>
+            </button>
+
+            <button 
+                onclick="vote('green')" 
+                class="w-full bg-slate-800 hover:bg-green-900/40 border-2 border-slate-700 hover:border-green-500 rounded-xl p-6 text-left transition transform hover:scale-[1.02]"
+            >
+                <div class="flex items-center">
+                    <span class="text-3xl mr-4">🟢</span>
+                    <div>
+                        <div class="font-semibold mb-1">Всегда внимательно читаю</div>
+                        <div class="text-sm text-slate-400">Изучаю все пункты перед согласием</div>
+                    </div>
+                </div>
+            </button>
+        </div>
+
+        <!-- Результаты (после голосования) -->
+        <div id="resultsSection" class="hidden">
+            <div class="bg-slate-800 rounded-xl p-6 border border-slate-700 mb-6">
+                <h3 class="font-semibold mb-4 text-center">Результаты опроса</h3>
+                
+                <!-- Красный вариант -->
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="flex items-center">
+                            <span class="text-xl mr-2">🔴</span>
+                            <span class="text-sm">Никогда не читаю</span>
+                        </span>
+                        <span class="font-bold" id="redPercent">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-900 rounded-full h-4 overflow-hidden">
+                        <div id="redBar" class="bg-gradient-to-r from-red-500 to-red-600 h-full transition-all duration-1000" style="width: 0%"></div>
+                    </div>
+                    <div class="text-xs text-slate-500 mt-1" id="redCount">0 голосов</div>
+                </div>
+
+                <!-- Зелёный вариант -->
+                <div class="mb-4">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="flex items-center">
+                            <span class="text-xl mr-2">🟢</span>
+                            <span class="text-sm">Всегда читаю внимательно</span>
+                        </span>
+                        <span class="font-bold" id="greenPercent">0%</span>
+                    </div>
+                    <div class="w-full bg-slate-900 rounded-full h-4 overflow-hidden">
+                        <div id="greenBar" class="bg-gradient-to-r from-green-500 to-green-600 h-full transition-all duration-1000" style="width: 0%"></div>
+                    </div>
+                    <div class="text-xs text-slate-500 mt-1" id="greenCount">0 голосов</div>
+                </div>
+
+                <div class="text-center text-sm text-slate-400 mt-4 pt-4 border-t border-slate-700">
+                    Всего проголосовало: <span class="font-bold text-white" id="totalCount">0</span>
+                </div>
+            </div>
+
+            <!-- Сообщение под результатом -->
+            <div id="resultMessage" class="bg-cyan-900/30 border border-cyan-500/50 rounded-xl p-4 mb-6"></div>
+
+            <a href="dashboard.html" class="block w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-lg transition text-center">
+                Вернуться в кабинет →
+            </a>
+        </div>
+
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/poll.js"></script>
+</body>
+</html>
