@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чек-лист «15 шагов» — Интернет-гигиена</title>
+    <script ></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slsrc="https://cdn.tailwindcss.com"ate-800 to-slate-900 min-h-screen text-white">
+
+    <div class="container mx-auto px-4 py-8 max-w-2xl">
+        
+        <!-- Кнопка назад -->
+        <a href="dashboard.html" class="inline-flex items-center text-slate-400 hover:text-white mb-6 transition">
+            <span class="mr-2">←</span> Назад в кабинет
+        </a>
+
+        <!-- Заголовок-награда -->
+        <div class="text-center mb-8">
+            <div class="text-6xl mb-3">🏆</div>
+            <h1 class="text-3xl font-bold mb-2">Поздравляем!</h1>
+            <p class="text-slate-400 mb-1">Вы прошли все 3 раздела мастер-класса</p>
+            <p class="text-cyan-400 font-semibold">Ваш чек-лист «15 шагов» готов</p>
+        </div>
+
+        <!-- Карточка с инструкциями -->
+        <div class="bg-cyan-900/20 border border-cyan-500/50 rounded-xl p-4 mb-6">
+            <p class="text-sm text-slate-300">
+                <strong class="text-cyan-400">💡 Как использовать:</strong> 
+                Открывайте этот список раз в неделю и проверяйте, какие шаги уже сделали. 
+                Отмеченные пункты сохраняются — можно возвращаться и продолжать.
+            </p>
+        </div>
+
+        <!-- Прогресс выполнения -->
+        <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700">
+            <div class="flex justify-between items-center mb-2">
+                <span class="text-sm text-slate-400">Выполнено шагов:</span>
+                <span class="font-bold"><span id="completedCount">0</span> / 15</span>
+            </div>
+            <div class="w-full bg-slate-900 rounded-full h-3 overflow-hidden">
+                <div id="progressBar" class="bg-gradient-to-r from-green-500 to-cyan-500 h-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Разделы чек-листа -->
+        
+        <!-- Блок 1: Соглашения и подписки -->
+        <div class="mb-6">
+            <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+                <span class="text-2xl">📄</span>
+                Соглашения и подписки
+            </h2>
+            <div class="space-y-2" id="block1Items">
+                <!-- Items генерируются JS -->
+            </div>
+        </div>
+
+        <!-- Блок 2: Cookies и слежка -->
+        <div class="mb-6">
+            <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+                <span class="text-2xl">🍪</span>
+                Cookies и слежка
+            </h2>
+            <div class="space-y-2" id="block2Items">
+                <!-- Items генерируются JS -->
+            </div>
+        </div>
+
+        <!-- Блок 3: Разрешения приложений -->
+        <div class="mb-6">
+            <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+                <span class="text-2xl">📱</span>
+                Разрешения приложений
+            </h2>
+            <div class="space-y-2" id="block3Items">
+                <!-- Items генерируются JS -->
+            </div>
+        </div>
+
+        <!-- Блок 4: Защита аккаунтов -->
+        <div class="mb-6">
+            <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+                <span class="text-2xl">🔐</span>
+                Защита аккаунтов
+            </h2>
+            <div class="space-y-2" id="block4Items">
+                <!-- Items генерируются JS -->
+            </div>
+        </div>
+
+        <!-- Блок 5: Регулярная проверка -->
+        <div class="mb-8">
+            <h2 class="text-lg font-bold mb-3 flex items-center gap-2">
+                <span class="text-2xl">🔍</span>
+                Регулярная проверка
+            </h2>
+            <div class="space-y-2" id="block5Items">
+                <!-- Items генерируются JS -->
+            </div>
+        </div>
+
+        <!-- Финальные кнопки -->
+        <div class="space-y-3">
+            <button onclick="printChecklist()" class="w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-lg transition">
+                🖨 Распечатать / Сохранить PDF
+            </button>
+            <button onclick="resetChecklist()" class="w-full bg-slate-700 hover:bg-slate-600 text-slate-300 font-semibold py-3 px-6 rounded-lg transition">
+                Сбросить отметки
+            </button>
+        </div>
+
+        <p class="text-center text-slate-500 text-xs mt-8">
+            Возвращайтесь к этому списку раз в неделю. Маленькие шаги — большая защита 💪
+        </p>
+
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/checklist.js"></script>
+</body>
+</html>
