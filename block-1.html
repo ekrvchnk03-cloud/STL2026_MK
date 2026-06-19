@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" contentв="width=device-width, initial-scale=1.0">
+    <title>Раздел 1 — Лицензия</title>
+    <script .tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gradient-to-br from-slate-900 via-slatesrc="https://cdn-800 to-slate-900 min-h-screen text-white">
+
+    <div class="container mx-auto px-4 py-8 max-w-3xl">
+        
+        <!-- Кнопка назад -->
+        <a href="dashboard.html" class="inline-flex items-center text-slate-400 hover:text-white mb-6 transition">
+            <span class="mr-2">←</span> Назад в кабинет
+        </a>
+
+        <!-- Заголовок -->
+        <div class="mb-6">
+            <div class="flex items-center gap-3 mb-2">
+                <span class="text-3xl">📄</span>
+                <span class="text-xs text-cyan-400 font-semibold bg-cyan-900/30 px-3 py-1 rounded-full">РАЗДЕЛ 1</span>
+            </div>
+            <h1 class="text-2xl font-bold mb-2">Лицензия, которую мы бы все подписали</h1>
+            <p class="text-slate-400">Найди и кликни на 3 подозрительных пункта в соглашении.</p>
+        </div>
+
+        <!-- Прогресс -->
+        <div class="bg-slate-800 rounded-xl p-4 mb-6 border border-slate-700 flex items-center justify-between">
+            <div>
+                <div class="text-sm text-slate-400">Найдено подвохов:</div>
+                <div class="text-2xl font-bold"><span id="foundCount">0</span> / 3</div>
+            </div>
+            <div class="text-right">
+                <div class="text-sm text-slate-400">Время:</div>
+                <div class="text-2xl font-bold font-mono" id="timer">01:00</div>
+            </div>
+        </div>
+
+        <!-- Учебное соглашение -->
+        <div class="bg-slate-800 rounded-xl p-6 mb-6 border border-slate-700">
+            <h3 class="text-white font-semibold mb-4 text-center">ПОЛЬЗОВАТЕЛЬСКОЕ СОГЛАШЕНИЕ СЕРВИСА «CLOUDLIFE»</h3>
+            
+            <div class="text-sm text-slate-300 space-y-3 leading-relaxed" id="agreementText">
+                
+                <p><span class="font-semibold text-slate-400">1.</span> Регистрируясь на сервисе CloudLife, Пользователь подтверждает своё совершеннолетие и дееспособность.</p>
+                
+                <p><span class="font-semibold text-slate-400">2.</span> Сервис предоставляет Пользователю доступ к функционалу хранения и обработки файлов в облачном хранилище объёмом до 5 ГБ на бесплатной основе.</p>
+                
+                <p data-trap="autopay" class="suspicious-clickable"><span class="font-semibold text-slate-400">3.</span> По истечении пробного периода (14 календарных дней) подписка на тариф «Premium» автоматически продлевается. Списание средств с привязанной банковской карты Пользователя производится без дополнительного уведомления.</p>
+                
+                <p><span class="font-semibold text-slate-400">4.</span> Пользователь обязуется не загружать в сервис материалы, нарушающие законодательство Российской Федерации, включая контент порнографического, экстремистского или иного запрещённого характера.</p>
+                
+                <p><span class="font-semibold text-slate-400">5.</span> Для обеспечения качества сервиса Пользователь обязуется предоставлять достоверную контактную информацию при регистрации.</p>
+                
+                <p data-trap="partners" class="suspicious-clickable"><span class="font-semibold text-slate-400">6.</span> Сервис вправе передавать персональные данные Пользователя своим партнёрам и третьим лицам без ограничения их количества и без получения дополнительного согласия Пользователя для маркетинговых, аналитических и иных целей.</p>
+                
+                <p><span class="font-semibold text-slate-400">7.</span> Техническая поддержка осуществляется в рабочие дни с 09:00 до 18:00 по московскому времени посредством электронной почты support@cloudlife.example.</p>
+                
+                <p data-trap="unilateral" class="suspicious-clickable"><span class="font-semibold text-slate-400">8.</span> Сервис оставляет за собой право в одностороннем порядке изменять условия настоящего Соглашения, включая стоимость подписки и состав предоставляемых услуг, без предварительного уведомления Пользователя.</p>
+                
+                <p><span class="font-semibold text-slate-400">9.</span> При обнаружении технических неполадок Пользователь обязуется незамедлительно сообщать о них в службу поддержки.</p>
+                
+                <p><span class="font-semibold text-slate-400">10.</span> Настоящее Соглашение регулируется законодательством Российской Федерации. Все споры подлежат рассмотрению в суде по месту нахождения Сервиса.</p>
+                
+            </div>
+        </div>
+
+        <!-- Кнопка завершения (появляется когда найдены все 3) -->
+        <button 
+            id="finishBtn" 
+            onclick="finishBlock()" 
+            disabled
+            class="w-full bg-slate-700 text-slate-500 cursor-not-allowed font-semibold py-3 px-6 rounded-lg transition"
+        >
+            Найдите все 3 подвоха
+        </button>
+
+    </div>
+
+    <!-- Модалка с пояснением (появляется при клике на правильный пункт) -->
+    <div id="explanationModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
+        <div class="bg-slate-800 rounded-xl max-w-md w-full p-6 border border-green-500/50">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="text-3xl">✅</span>
+                <h3 class="text-lg font-semibold text-green-400">Подвох найден!</h3>
+            </div>
+            <p class="text-slate-300 mb-4" id="explanationText"></p>
+            <button onclick="closeExplanation()" class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                Понятно, ищу дальше
+            </button>
+        </div>
+    </div>
+
+    <!-- Модалка итогов -->
+    <div id="finishModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
+        <div class="bg-slate-800 rounded-xl max-w-md w-full p-6 border border-cyan-500/50">
+            <div class="text-center mb-4">
+                <div class="text-5xl mb-3">🎉</div>
+                <h3 class="text-xl font-bold mb-2">Раздел пройден!</h3>
+                <p class="text-slate-400">Вы нашли все 3 подвоха.</p>
+            </div>
+
+            <div class="bg-slate-900 rounded-lg p-4 mb-4">
+                <p class="text-sm text-slate-300 mb-2"><strong class="text-cyan-400">💡 Запомни алгоритм «Чтение по диагонали»:</strong></p>
+                <p class="text-xs text-slate-400">Ищи Ctrl+F: «третьи лица», «автопродление», «в одностороннем порядке», «бессрочно», «маркетинговые цели». Смущает хотя бы один пункт — не нажимай «Согласен».</p>
+            </div>
+
+            <a href="dashboard.html" class="block w-full bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-6 rounded-lg transition text-center">
+                Перейти к разделу 2 →
+            </a>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/block-1.js"></script>
+</body>
+</html>
